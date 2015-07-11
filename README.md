@@ -16,4 +16,9 @@ An example is:
                                                             b 3     c 2
                                                           
                                                           
-Encoded 'a' would be  
+To encode each character to simply traverse the tree where left is a binary 0 and right is a 1
+
+a   0
+d   10
+b   110
+c   111
