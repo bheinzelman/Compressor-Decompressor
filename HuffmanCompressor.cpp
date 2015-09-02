@@ -36,14 +36,14 @@ unsigned char* HuffmanCompressor::compress(long& size)
 		unsigned char* binary = new unsigned char[binLen];
 
 		//write the meta data from 'serializeFreq'
-		for (int i = 0; i < meta.size(); i++)
+		for (unsigned int i = 0; i < meta.size(); i++)
 		{
 			if (meta[i] != '\0')
 				binary[i] = (unsigned char)meta[i];
 		}
 
 		//write the actual encoding
-		for (int j = meta.size(); j < meta.size() + dataLen; j++)
+		for (unsigned int j = meta.size(); j < meta.size() + dataLen; j++)
 		{
 			binary[j] = data[j - meta.size()];
 		}
