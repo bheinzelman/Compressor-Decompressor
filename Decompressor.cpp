@@ -3,6 +3,17 @@
 #include <iostream>
 #include <string>
 
+
+#ifdef _WIN32
+
+#define EXCEPTION(s) std::exception(s)
+
+#else
+
+#define EXCEPTION(s) std::exception()
+
+#endif
+
 Decompressor::Decompressor(std::fstream& file) : file(file) 
 {
 	freq = NULL;
@@ -26,7 +37,10 @@ void Decompressor::deSerializeFrequency()
 	while (c != '_')
 	{
 		if (!isdigit(c))
-			throw std::exception("Invalid bzip file");
+		{
+                     EXCEPTION("Invalid bzip file");
+		}
+
 
 		totalCharStr += c;
 		c = file.get();
@@ -39,7 +53,7 @@ void Decompressor::deSerializeFrequency()
 	while (c != '_')
 	{
 		if (!isdigit(c))
-			throw std::exception("Invalid bzip file");
+		  EXCEPTION("Invalid bzip file");
 
 		charCountStr += c;
 		c = file.get();
@@ -54,7 +68,7 @@ void Decompressor::deSerializeFrequency()
 	while (c != '_') 
 	{
 		if (!isdigit(c))
-			throw std::exception("Invalid bzip file");
+		    EXCEPTION("Invalid bzip file");
 
 		freqCountStr += c;
 		c = file.get();
@@ -84,7 +98,7 @@ void Decompressor::deSerializeFrequency()
 			index++;
 		}
 		else {
-			throw std::exception("Invalid bzip file");
+			EXCEPTION("Invalid bzip file");
 		}
 	}
 }

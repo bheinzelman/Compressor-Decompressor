@@ -44,7 +44,7 @@ int main(int argc, char* argv[]) {
   BYTE* data = dec.decompress();
   int dataSize = dec.getTotalChars();
 
-  writeBinary(data, dataSize, "smallDec.txt");
+  writeBinary(data, dataSize, "out.txt");
  
   //release the memory
   delete[] compressedData;

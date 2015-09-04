@@ -1,5 +1,6 @@
 #include "HuffmanCompressor.h"
 #include <iostream>
+#include <cstring>
 
 HuffmanCompressor::HuffmanCompressor(char* fileBuffer, int buffLen) : Compressor(fileBuffer, buffLen) 
 {
