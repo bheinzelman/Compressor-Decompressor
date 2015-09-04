@@ -17,10 +17,10 @@ unsigned char* BinaryIO::write_bin(std::string in, int& size) {
 	int bitNumber = BITS_PER_BYTE;
 	int bytesWritten = 0;
 
-	for (int i = 0; i < in.size(); i++)
+	for (unsigned long i = 0; i < in.size(); i++)
 	{
 		if (in[i] == '1')
-			currentByte += pow(2.0, bitNumber);
+			currentByte += static_cast<unsigned char>(pow(2.0, bitNumber));
 		bitNumber--;
 		if (bitNumber < 0)
 		{

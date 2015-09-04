@@ -43,7 +43,7 @@ std::string HTree::getCode(std::string c, Node<KeyPair*>* tree) {
 	}
 
 	bool left = false;
-	for (int i = 0; i < tree->left->item->first.size(); i++) {
+	for (unsigned int i = 0; i < tree->left->item->first.size(); i++) {
 		if (c[0] == tree->left->item->first[i]) {
 			left = true;
 			break;

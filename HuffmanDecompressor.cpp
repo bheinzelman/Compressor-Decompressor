@@ -15,7 +15,7 @@ BYTE* HuffmanDecompressor::decompress() {
 		//build the tree
 		tree.buildTree();
 
-		int pos = file.tellg();
+		unsigned long pos = static_cast<unsigned long>(file.tellg());
 
 		file.seekg(0, file.end);
 
@@ -43,7 +43,7 @@ BYTE* HuffmanDecompressor::decompress() {
 		int bufferIndex = 0;
 
 		//feed bits to tree and get outputted characters
-		for (int i = 0; i < bits.size(); i++)
+		for (auto i = 0; i < bits.size(); i++)
 		{
 			char* j = NULL;
 			bool b = false;
