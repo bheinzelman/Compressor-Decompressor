@@ -60,7 +60,7 @@ int main(int argc, char* argv[]) {
 
     int dataSize = dec.getTotalChars();
 
-    writeBinary(data, dataSize, *getUnzipName(argv[2]));
+    writeBinary(data, dataSize, getUnzipName(argv[2]));
 
     delete [] data;
 
