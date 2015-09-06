@@ -1,18 +1,8 @@
 #include "Decompressor.h"
-#include <exception>
+#include "HuffmanException.h"
 #include <iostream>
 #include <string>
 
-
-#ifdef _WIN32
-
-#define EXCEPTION(s) std::exception(s)
-
-#else
-
-#define EXCEPTION(s) std::exception()
-
-#endif
 
 Decompressor::Decompressor(std::fstream& file) : file(file) 
 {

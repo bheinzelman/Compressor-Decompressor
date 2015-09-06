@@ -1,6 +1,13 @@
 #ifndef HUFF_MAN_EXCEPTION_H
 #define HUFF_MAN_EXCEPTION_H
 
+
+#ifdef _WIN32
+#define EXCEPTION(s) std::exception(s)
+#else
+#define EXCEPTION(s) std::exception()
+#endif
+
 #include <exception>
 #include <string>
 
