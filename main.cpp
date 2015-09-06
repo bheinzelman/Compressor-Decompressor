@@ -1,5 +1,6 @@
 #include <iostream>
 #include <fstream>
+#include <string.h>
 
 #include "Frequency.h"
 #include "HuffmanCompressor.h"
@@ -11,47 +12,64 @@ const char* getBufferFromFile(const char* filename, int& length, bool binary=fal
 
 void writeBinary(unsigned char* buffer, int size, std::string filename);
 
+void printInfo();
+
+const char* getUnzipName(char* zipname);
 
 int main(int argc, char* argv[]) {
   
-  if (argc < 2) {
-	std::cerr << "Insufficient args\n";
+  if (argc < 3) {
+    printInfo();
 
-    exit(EXIT_FAILURE);
+    return 0;  
+   }
+	
+  char* flag = argv[1];
+
+  if (strcmp(flag, "-c") == 0) {
+    int fileSize;
+	
+    //get the buffer from the input file 
+    const char* inBuffer = getBufferFromFile(argv[2], fileSize);
+
+    //make the compressor
+    HuffmanCompressor compressor = HuffmanCompressor((char*)inBuffer, fileSize);
+
+    long compSize;
+    //compress the data
+    unsigned char* compressedData = compressor.compress(compSize);
+
+    std::string path = std::string(argv[2]) + ".bzip";
+
+    //write the compressed data to the disk
+    writeBinary(compressedData, compSize, path);
+
+    delete [] compressedData;
+
+    delete [] inBuffer;
+
+    return 0;
   }
 
-  int fileSize;
+  else if (strcmp(flag, "-d") == 0) {
+    std::fstream in(argv[2], std::ios::in|std::ios::binary);
 
-  //get the buffer from the input file 
-  const char* inBuffer = getBufferFromFile(argv[1], fileSize);
+    HuffmanDecompressor dec = HuffmanDecompressor(in);
 
-  //make the compressor
-  HuffmanCompressor compressor = HuffmanCompressor((char*)inBuffer, fileSize);
+    BYTE* data = dec.decompress();
 
-  long compSize;
-  //compress the data
-  unsigned char* compressedData = compressor.compress(compSize);
+    int dataSize = dec.getTotalChars();
 
-  std::string path = std::string(argv[1]) + ".bzip";
+    writeBinary(data, dataSize, *getUnzipName(argv[2]));
 
-  //write the compressed data to the disk
-  writeBinary(compressedData, compSize, path);
+    delete [] data;
 
-  std::fstream in(path, std::ios::in|std::ios::binary);
+    return 0;
+  }
 
-  HuffmanDecompressor dec = HuffmanDecompressor(in);
-
-  BYTE* data = dec.decompress();
-  int dataSize = dec.getTotalChars();
-
-  writeBinary(data, dataSize, "out.txt");
- 
-  //release the memory
-  delete[] compressedData;
-
-  delete[] inBuffer;
-
-  delete[] data;
+  //else {
+    //printInfo();
+  //}
 
   return 0;
 }
@@ -91,4 +109,27 @@ void writeBinary(unsigned char* buffer, int size, std::string filename)
 	{
 		out << buffer[i];
 	}
+}
+
+
+void printInfo() {
+	std::cout << "[param] file" << std::endl;
+
+	std::cout << "params: \n";
+
+	std::cout << "-d -> decompress\n";
+
+	std::cout << "-c -> compress\n~";
+}
+
+const char* getUnzipName(char* zipname) {
+	std::string ret = "";
+
+	std::string tmp = std::string(zipname);
+
+	for (auto i = 0; i < tmp.size() - 4; i++) {
+		ret += tmp[i];
+	}
+
+	return ret.c_str();
 }

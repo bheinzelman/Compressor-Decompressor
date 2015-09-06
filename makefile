@@ -1,6 +1,6 @@
 CXX=g++
 CXXFLAGS=-std=c++11 
-BIN=prog
+BIN=bzip
 
 SRC=$(wildcard *.cpp)
 OBJ=$(SRC:%.cpp=%.o)
