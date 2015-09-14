@@ -1,5 +1,5 @@
 # Compressor-Decompressor
-Text Compressor built with Visual C++
+Text Compressor , can be built on Windows, and Linux. Not sure about OSX
 
 Text is encoded with a Huffman tree.
 
