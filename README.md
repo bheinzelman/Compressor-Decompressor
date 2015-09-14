@@ -22,3 +22,6 @@ To encode each character to simply traverse the tree where left is a binary 0 an
     d   10
     b   110
     c   111
+
+to do:
+compressor needs to take a buffer rather than an input file
