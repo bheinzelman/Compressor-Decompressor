@@ -46,3 +46,5 @@ Temporary Items
 *.obj
 *.exe
 *.bzip
+*.o
+*.txt

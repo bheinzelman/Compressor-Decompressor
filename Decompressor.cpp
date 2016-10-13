@@ -36,7 +36,7 @@ void Decompressor::deSerializeFrequency()
 	{
 		if (!isdigit(c))
 		{
-			EXCEPTION("Invalid bzip file");
+			throw HuffmanException("Invalid bzip file");
 		}
 
 
@@ -51,7 +51,7 @@ void Decompressor::deSerializeFrequency()
 	while (c != '_')
 	{
 		if (!isdigit(c))
-		  EXCEPTION("Invalid bzip file");
+		  throw HuffmanException("Invalid bzip file");
 
 		charCountStr += c;
 		c = file.get();
@@ -66,7 +66,7 @@ void Decompressor::deSerializeFrequency()
 	while (c != '_') 
 	{
 		if (!isdigit(c))
-		    EXCEPTION("Invalid bzip file");
+		    throw HuffmanException("Invalid bzip file");
 
 		freqCountStr += c;
 		c = file.get();
@@ -96,7 +96,7 @@ void Decompressor::deSerializeFrequency()
 			index++;
 		}
 		else {
-			EXCEPTION("Invalid bzip file");
+			throw HuffmanException("Invalid bzip file");
 		}
 	}
 

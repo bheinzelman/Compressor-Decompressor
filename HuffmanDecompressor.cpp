@@ -1,4 +1,5 @@
 #include "HuffmanDecompressor.h"
+#include "HuffmanException.h"
 #include "BinaryIO.h"
 #include <iostream>
 
@@ -62,8 +63,9 @@ BYTE* HuffmanDecompressor::decompress() {
         delete[] buffer;
 		return out;
 	}
-	catch (std::exception e) 
+	catch (HuffmanException e) 
 	{
+        std::cerr << e.what() << std::endl;
 		return NULL;
 	}	
 	
