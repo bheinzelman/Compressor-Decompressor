@@ -11,6 +11,14 @@ Decompressor::Decompressor(std::fstream& file) : file(file)
 	totalChars = 0;
 }
 
+Decompressor::~Decompressor() 
+{
+    if (freq != NULL) 
+    {
+        delete[] freq;
+    }
+}
+
 void Decompressor::deSerializeFrequency() 
 {
 	std::string charCountStr = "";
@@ -91,6 +99,8 @@ void Decompressor::deSerializeFrequency()
 			EXCEPTION("Invalid bzip file");
 		}
 	}
+
+    delete[] buffer;
 }
 
 

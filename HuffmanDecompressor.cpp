@@ -58,6 +58,8 @@ BYTE* HuffmanDecompressor::decompress() {
 				bufferIndex++;
 			}
 		}
+
+        delete[] buffer;
 		return out;
 	}
 	catch (std::exception e) 
