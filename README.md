@@ -23,5 +23,15 @@ To encode each character to simply traverse the tree where left is a binary 0 an
     b   110
     c   111
 
+
+## To build
+- `make`
+
+## To run
+- Compress a file
+  - `./bzip -c the_file`
+- Decompress a file
+  - `./bzip -d the_file.bzip`
+
 to do:
 compressor needs to take a buffer rather than an input file
