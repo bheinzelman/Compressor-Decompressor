@@ -56,14 +56,8 @@ BYTE* HuffmanDecompressor::decompress() {
 				char c = *j;
 				out[bufferIndex] = c;
 				bufferIndex++;
-#if _DEBUG
-				std::cout << c;
-#endif
 			}
 		}
-#if _DEBUG
-		std::cout << std::endl;
-#endif
 		return out;
 	}
 	catch (std::exception e) 

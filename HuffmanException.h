@@ -3,7 +3,7 @@
 
 
 #ifdef _WIN32
-#define EXCEPTION(s) std::exception(s)
+#define EXCEPTION(s) std::exception()
 #else
 #define EXCEPTION(s) std::exception()
 #endif

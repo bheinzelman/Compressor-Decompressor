@@ -28,7 +28,7 @@ void Decompressor::deSerializeFrequency()
 	{
 		if (!isdigit(c))
 		{
-                     EXCEPTION("Invalid bzip file");
+			EXCEPTION("Invalid bzip file");
 		}
 
 
