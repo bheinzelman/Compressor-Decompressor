@@ -17,7 +17,7 @@ unsigned char* HuffmanCompressor::compress(long& size)
 	try {
 		
 		std::string code = "";
-		for (long i = 0; i < buffLength; i++)
+		for (long i = 0; i < /*buffLength*/totalChars; i++)
 		{
 			std::string ch = std::string(1, fileBuffer[i]);
 

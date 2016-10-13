@@ -13,6 +13,8 @@ class Decompressor {
 public:
 	Decompressor(std::fstream& file);
 
+	~Decompressor();
+
 	virtual BYTE* decompress() = 0;
 
 	virtual int getTotalChars();

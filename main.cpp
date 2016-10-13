@@ -22,7 +22,7 @@ int main(int argc, char* argv[]) {
     printInfo();
 
     return 0;  
-   }
+  }
 	
   char* flag = argv[1];
 
@@ -60,16 +60,16 @@ int main(int argc, char* argv[]) {
 
     int dataSize = dec.getTotalChars();
 
-    writeBinary(data, dataSize, getUnzipName(argv[2]));
+    writeBinary(data, dataSize, "out.txt");
 
     delete [] data;
 
     return 0;
   }
 
-  //else {
-    //printInfo();
-  //}
+  else {
+    printInfo();
+  }
 
   return 0;
 }

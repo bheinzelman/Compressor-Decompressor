@@ -1,4 +1,5 @@
 #include "BinaryIO.h"
+#include <string>
 
 unsigned char* BinaryIO::write_bin(std::string in, int& size) {
 	//get even bytes
